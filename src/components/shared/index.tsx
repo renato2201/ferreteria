@@ -1,2 +1,2 @@
 export * from "./shop/navbar/NavBar";
-export * from "./admin/sidebar/SideBar";
+export * from "./admin/sidebar/DesktopSideBar";
