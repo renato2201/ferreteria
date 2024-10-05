@@ -1,9 +1,8 @@
-import { NavBar } from "@/components/shared";
+import { MobileStoreSideBar, NavBar } from "@/components/shared";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+
 import { Hammer, PaintBucket, Truck, Wrench } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function ShopLayout({
@@ -31,6 +30,7 @@ export default function ShopLayout({
 							Buscar
 						</Button>
 					</form>
+					<MobileStoreSideBar />
 					<NavBar />
 				</div>
 			</header>
