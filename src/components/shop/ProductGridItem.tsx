@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardFooter } from "../ui/card";
 import type { Product } from "@/interfaces/productsInterface";
+import Link from "next/link";
 
 interface Props {
 	product: Product;
@@ -25,7 +26,9 @@ export const ProductGridItem = ({ product }: Props) => {
 			</CardContent>
 			<CardFooter className="p-4 flex justify-between products-center">
 				<span className="text-lg font-bold">${product.price.toFixed(2)}</span>
-				<Button>Ver detalles</Button>
+				<Button asChild>
+					<Link href={`/producto/${product.id}`}>Ver detalles</Link>
+				</Button>
 			</CardFooter>
 		</Card>
 	);
