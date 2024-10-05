@@ -1,5 +1,5 @@
 import { MenWorking } from "@/components/shared";
 
-export default function Page() {
+export default function UsersPage() {
 	return <MenWorking />;
 }
