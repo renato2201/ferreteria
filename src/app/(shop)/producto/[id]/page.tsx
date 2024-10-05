@@ -14,7 +14,7 @@ export default async function ProductPage({ params }: Props) {
 	).then((res) => res.json() as Promise<Product>);
 	return (
 		<div className="container mx-auto px-4 py-8">
-			<div className="flex justify-between gap-4">
+			<div className=" grid grid-cols-1 sm:grid-cols-2 gap-4">
 				<Image
 					src={product.image}
 					alt={product.title}

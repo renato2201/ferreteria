@@ -1,4 +1,4 @@
-import { ShopMenu } from "@/app/menus/shopMenu";
+import { ShopMenu } from "@/menus/shopMenu";
 import { NavBarItem } from "./NavBarItem";
 
 export const NavBar = () => {

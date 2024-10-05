@@ -1,5 +1,5 @@
 "use client";
-import { adminMenu } from "@/app/menus/adminMenu";
+import { adminMenu } from "@/menus/adminMenu";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";

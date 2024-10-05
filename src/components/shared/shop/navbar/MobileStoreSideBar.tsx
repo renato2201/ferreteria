@@ -1,5 +1,5 @@
 "use client";
-import { mobileShopMenu, ShopMenu } from "@/app/menus/shopMenu";
+import { mobileShopMenu, ShopMenu } from "@/menus/shopMenu";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";

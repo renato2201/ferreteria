@@ -1,5 +1,5 @@
 "use client";
-import { adminMenu } from "@/app/menus/adminMenu";
+import { adminMenu } from "@/menus/adminMenu";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 export const MobileAdminSideBar = () => {
 	const pathname = usePathname();
 	return (
-		<div className="flex md:hidden">
+		<div className="flex lg:hidden">
 			<Sheet>
 				<SheetTrigger asChild>
 					<Button variant="ghost" className="lg:hidden" size="icon">
