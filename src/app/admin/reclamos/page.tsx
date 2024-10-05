@@ -29,6 +29,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CalendarIcon, ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 // Mock data for reclamos
 const initialReclamos = [
@@ -140,77 +141,11 @@ export default function ReclamosManagement() {
 								<TableCell>{reclamo.asunto}</TableCell>
 								<TableCell>{reclamo.estado}</TableCell>
 								<TableCell>
-									<Dialog>
-										<DialogTrigger asChild>
-											<Button variant="outline">Ver detalles</Button>
-										</DialogTrigger>
-										<DialogContent className="sm:max-w-[425px]">
-											<DialogHeader>
-												<DialogTitle>Detalles del Reclamo</DialogTitle>
-												<DialogDescription>
-													Reclamo de {reclamo.cliente}
-												</DialogDescription>
-											</DialogHeader>
-											<div className="grid gap-4 py-4">
-												<div className="grid grid-cols-4 items-center gap-4">
-													<Label htmlFor="asunto" className="text-right">
-														Asunto
-													</Label>
-													<Input
-														id="asunto"
-														value={reclamo.asunto}
-														className="col-span-3"
-														readOnly
-													/>
-												</div>
-												<div className="grid grid-cols-4 items-center gap-4">
-													<Label htmlFor="fecha" className="text-right">
-														Fecha
-													</Label>
-													<Input
-														id="fecha"
-														value={reclamo.fecha}
-														className="col-span-3"
-														readOnly
-													/>
-												</div>
-												<div className="grid grid-cols-4 items-center gap-4">
-													<Label htmlFor="estado" className="text-right">
-														Estado
-													</Label>
-													<Select
-														defaultValue={reclamo.estado}
-														onValueChange={(value) =>
-															handleUpdateReclamo(reclamo.id, value)
-														}
-													>
-														<SelectTrigger className="col-span-3">
-															<SelectValue placeholder="Seleccionar estado" />
-														</SelectTrigger>
-														<SelectContent>
-															<SelectItem value="Pendiente">
-																Pendiente
-															</SelectItem>
-															<SelectItem value="En proceso">
-																En proceso
-															</SelectItem>
-															<SelectItem value="Resuelto">Resuelto</SelectItem>
-														</SelectContent>
-													</Select>
-												</div>
-												<div className="grid grid-cols-4 items-center gap-4">
-													<Label htmlFor="detalles" className="text-right">
-														Detalles
-													</Label>
-													<Textarea
-														id="detalles"
-														className="col-span-3"
-														placeholder="Detalles del reclamo..."
-													/>
-												</div>
-											</div>
-										</DialogContent>
-									</Dialog>
+									<Button asChild>
+										<Link href={`/admin/reclamo/${reclamo.id}`}>
+											Ver detalles
+										</Link>
+									</Button>
 								</TableCell>
 							</TableRow>
 						))}

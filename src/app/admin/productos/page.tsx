@@ -115,12 +115,12 @@ export default function ProductPage() {
 				<Table>
 					<TableHeader>
 						<TableRow>
-							<TableHead className="w-[100px]">ID</TableHead>
+							<TableHead>ID</TableHead>
 							<TableHead>Nombre</TableHead>
 							<TableHead>Precio</TableHead>
 							<TableHead>Categoría</TableHead>
 							<TableHead>Stock</TableHead>
-							<TableHead className="text-right">Acciones</TableHead>
+							<TableHead>Acciones</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
@@ -129,26 +129,28 @@ export default function ProductPage() {
 								key={product.id}
 								className={index % 2 === 0 ? "bg-slate-200" : ""}
 							>
-								<TableCell className="font-medium">{product.id}</TableCell>
+								<TableCell>{product.id}</TableCell>
 								<TableCell>{product.name}</TableCell>
 								<TableCell>{product.price}</TableCell>
 								<TableCell>{product.category}</TableCell>
 								<TableCell>{product.stock}</TableCell>
-								<TableCell className="text-right">
-									<Button
-										variant="ghost"
-										size="icon"
-										onClick={() => handleEditProduct(product.id)}
-									>
-										<Pencil className="h-4 w-4" />
-									</Button>
-									<Button
-										variant="ghost"
-										size="icon"
-										onClick={() => handleDeleteProduct(product.id)}
-									>
-										<Trash2 className="h-4 w-4" />
-									</Button>
+								<TableCell>
+									<div className="flex space-x-2">
+										<Button
+											variant="ghost"
+											size="icon"
+											onClick={() => handleEditProduct(product.id)}
+										>
+											<Pencil className="h-4 w-4" />
+										</Button>
+										<Button
+											variant="ghost"
+											size="icon"
+											onClick={() => handleDeleteProduct(product.id)}
+										>
+											<Trash2 className="h-4 w-4" />
+										</Button>
+									</div>
 								</TableCell>
 							</TableRow>
 						))}
