@@ -2,7 +2,13 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
+import {
+	Sheet,
+	SheetTrigger,
+	SheetContent,
+	SheetClose,
+} from "@/components/ui/sheet";
+import { Cross2Icon } from "@radix-ui/react-icons";
 import {
 	Bell,
 	Home,
@@ -40,11 +46,24 @@ export default function AdminLayout({
 					<SheetTrigger asChild>
 						<Button variant="ghost" className="lg:hidden" size="icon">
 							<Menu />
-							<span className="sr-only">Toggle Menu</span>
+							{/* <span className="sr-only">Toggle Menu</span> */}
 						</Button>
 					</SheetTrigger>
 					<SheetContent side="left" className="w-64 p-0">
 						<ScrollArea className="h-full py-6 px-3">
+							<div className=" flex items-center space-x-4 mb-4">
+								<Avatar>
+									<AvatarImage
+										src="/placeholder.svg?height=32&width=32"
+										alt="Pablo Garza"
+									/>
+									<AvatarFallback>PG</AvatarFallback>
+								</Avatar>
+								<div>
+									<h2 className="text-sm font-semibold">Pablo Garza</h2>
+									<p className="text-xs text-gray-500">Administrator</p>
+								</div>
+							</div>
 							<nav className="space-y-2">
 								{menuItems.map((item) => (
 									<Button
@@ -64,7 +83,7 @@ export default function AdminLayout({
 						</ScrollArea>
 					</SheetContent>
 				</Sheet>
-				<div className="flex items-center space-x-4">
+				<div className=" items-center space-x-4 hidden lg:flex">
 					<Avatar>
 						<AvatarImage
 							src="/placeholder.svg?height=32&width=32"
