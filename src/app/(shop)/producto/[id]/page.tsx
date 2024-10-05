@@ -14,14 +14,15 @@ export default async function ProductPage({ params }: Props) {
 	).then((res) => res.json() as Promise<Product>);
 	return (
 		<div className="container mx-auto px-4 py-8">
-			<div className="flex justify-between">
+			<div className="flex justify-between gap-4">
 				<Image
 					src={product.image}
 					alt={product.title}
 					width={500}
 					height={500}
 				/>
-				<div className="py-4  flex flex-col gap-20">
+
+				<div className="py-4 flex flex-col gap-20 max-w-6xl">
 					<div>
 						<h1 className="text-3xl font-bold mb-6">{product.title}</h1>
 						<p>SKU:</p>

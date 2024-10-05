@@ -22,7 +22,9 @@ export default function FerreteriaLanding() {
 							</p>
 						</div>
 						<div className="space-x-4">
-							<Button>Ver Productos</Button>
+							<Button asChild>
+								<Link href={"/tienda"}>Ver Productos</Link>
+							</Button>
 							<Button variant="outline">Contactar</Button>
 						</div>
 					</div>

@@ -15,7 +15,7 @@ export default function ShopLayout({
 		<div className="flex flex-col min-h-screen">
 			<header className="w-full px-4 lg:px-6 h-14 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800">
 				<div className="container flex items-center justify-between">
-					<Link className="flex items-center justify-center" href="#">
+					<Link className="flex items-center justify-center" href="/">
 						<Hammer className="h-6 w-6 mr-2" />
 						<span className="font-bold">Ferretería Andina</span>
 					</Link>
