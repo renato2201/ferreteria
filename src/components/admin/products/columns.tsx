@@ -61,7 +61,7 @@ export const productColumns: ColumnDef<Product>[] = [
 			);
 		},
 		cell: ({ row }) => {
-			const quantity = row.getValue("quantity");
+			const quantity: number = row.getValue("quantity");
 			return <div className="text-center font-medium">{quantity}</div>;
 		},
 	},
