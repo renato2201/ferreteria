@@ -64,7 +64,7 @@ export const ProductForm = ({ product }: Props) => {
 									id="stock"
 									type="number"
 									value={stock}
-									onChange={(e) => setStock(parseInt(e.target.value))}
+									onChange={(e) => setStock(Number.parseInt(e.target.value))}
 									min={0}
 								/>
 							</div>

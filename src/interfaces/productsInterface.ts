@@ -19,4 +19,5 @@ export interface Product {
 	quantity: number;
 	discount: number;
 	totalPrice: number;
+	image: string;
 }
