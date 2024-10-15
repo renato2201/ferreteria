@@ -14,12 +14,12 @@ export const ProductGridItem = ({ product }: Props) => {
 			<CardContent className="p-4 flex-grow">
 				<Image
 					src={product.image}
-					alt={product.title}
+					alt={product.name}
 					width={500}
 					height={500}
 					className="w-full h-48 object-scale-down mb-4 rounded "
 				/>
-				<h2 className="text-xl font-semibold mb-2">{product.title}</h2>
+				<h2 className="text-xl font-semibold mb-2">{product.name}</h2>
 				<p className="text-gray-600 line-clamp-2" title={product.description}>
 					{product.description}
 				</p>
