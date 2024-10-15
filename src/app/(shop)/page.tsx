@@ -4,7 +4,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Hammer, Wrench, PaintBucket, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { NavBar } from "@/components/shared";
+
+export const metadata = {
+	title: "Ferreteria Andina | Inicio",
+	description:
+		"Ferreteria Andina es tu ferretería de confianza. Encuentra todo lo que necesitas para tus proyectos de construcción y reparación.",
+};
 
 export default function FerreteriaLanding() {
 	return (

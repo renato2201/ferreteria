@@ -10,7 +10,7 @@ interface Props {
 
 export const ProductGridItem = ({ product }: Props) => {
 	return (
-		<Card className="flex flex-col">
+		<Card className="flex flex-col max-w-[300px] shadow-md rounded-lg p-5">
 			<CardContent className="p-4 flex-grow">
 				<Image
 					src={product.image}

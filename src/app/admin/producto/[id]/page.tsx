@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
 import Link from "next/link";
-import { getSingleProduct } from "@/fake-data/fakeProducts";
+import { getSingleProduct } from "@/utils/productsAPI";
 import { ProductForm } from "@/components";
 
 interface Props {

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import type { Product } from "@/interfaces/productsInterface";
+import { getSingleProduct } from "@/utils/productsAPI";
 import Image from "next/image";
 
 interface Props {
@@ -9,24 +10,22 @@ interface Props {
 }
 
 export default async function ProductPage({ params }: Props) {
-	const product = await fetch(
-		`https://fakestoreapi.com/products/${params.id}`,
-	).then((res) => res.json() as Promise<Product>);
+	const product = await getSingleProduct(params.id);
 	return (
 		<div className="container mx-auto px-4 py-8">
 			<div className=" grid grid-cols-1 sm:grid-cols-2 gap-4">
 				<Image
-					src={product.image}
-					alt={product.title}
+					src={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
+					alt={product.name}
 					width={500}
 					height={500}
 				/>
 
 				<div className="py-4 flex flex-col gap-20 max-w-6xl">
 					<div>
-						<h1 className="text-3xl font-bold mb-6">{product.title}</h1>
-						<p>SKU:</p>
-						<p>Rating: {product.rating.rate}</p>
+						<h1 className="text-3xl font-bold mb-6">{product.name}</h1>
+						<p>SKU: {product.sku}</p>
+
 						<p className="text-gray-600">{product.description}</p>
 						<p>Price: ${product.price.toFixed(2)}</p>
 					</div>

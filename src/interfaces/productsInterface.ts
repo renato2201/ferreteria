@@ -1,21 +1,22 @@
+export interface ProductsResponse {
+	ok: boolean;
+	products: Product[];
+}
+
+export interface ProductResponse {
+	ok: boolean;
+	product: Product;
+}
+
 export interface Product {
-	id: number;
-	title: string;
-	price: number;
+	id: string;
+	name: string;
+	sku: string;
 	description: string;
-	category: Category;
-	image: string;
-	rating: Rating;
-}
-
-export enum Category {
-	Electronics = "electronics",
-	Jewelery = "jewelery",
-	MenSClothing = "men's clothing",
-	WomenSClothing = "women's clothing",
-}
-
-export interface Rating {
-	rate: number;
-	count: number;
+	price: number;
+	category: string;
+	categoryId: string;
+	quantity: number;
+	discount: number;
+	totalPrice: number;
 }

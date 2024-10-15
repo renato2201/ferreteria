@@ -1,21 +1,23 @@
 "use client";
 import { useState } from "react";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { Card, CardContent } from "../ui/card";
-import { Label } from "../ui/label";
-import { Checkbox } from "../ui/checkbox";
+
 import Image from "next/image";
-import { Button } from "../ui/button";
+
 import { Upload } from "lucide-react";
 import type { Product } from "@/interfaces/productsInterface";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
 interface Props {
 	product?: Product;
 }
 
 export const ProductForm = ({ product }: Props) => {
-	const [title, setTitle] = useState(product?.title ?? "");
+	const [title, setTitle] = useState(product?.name ?? "");
 	const [description, setDescription] = useState(product?.description ?? "");
 	const [stock, setStock] = useState(1);
 	const [sku, setSku] = useState("");
