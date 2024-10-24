@@ -1,6 +1,8 @@
 import { FilteredProducts, ProductGrid } from "@/components";
-import type { Product } from "@/interfaces/productsInterface";
+import { getCategoriesNames } from "@/utils/categoriesAPI";
 import { getProducts } from "@/utils/productsAPI";
+
+// export const fetchCache = "force-no-store";
 
 export const metadata = {
 	title: "Ferreteria Andina | Tienda",
@@ -8,13 +10,14 @@ export const metadata = {
 };
 export default async function ShopPage() {
 	const products = await getProducts();
+	const categories = await getCategoriesNames();
 
 	return (
-		<div className="container mx-auto px-4 py-8">
+		<div className="lg:px-10 lg:py-8 py-4">
 			<h1 className="text-3xl font-bold mb-6 text-center">
 				Nuestros Productos
 			</h1>
-			<FilteredProducts products={products} />
+			<FilteredProducts products={products} categories={categories} />
 		</div>
 	);
 }
