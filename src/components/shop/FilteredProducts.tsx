@@ -18,6 +18,7 @@ import type { Product } from "@/interfaces/productsInterface";
 
 import { DualRangeSlider } from "../ui/dual-range-slider";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 interface Props {
 	products: Product[];
@@ -98,7 +99,7 @@ export function FilteredProducts({ products, categories }: Props) {
 
 				<div className="w-full ">
 					{filteredProducts.length > 0 && (
-						<div className="flex justify-center items-center space-x-2 mt-8">
+						<div className="flex justify-center items-center space-x-2 mt-6">
 							<Button
 								variant="outline"
 								size="icon"
@@ -131,10 +132,11 @@ export function FilteredProducts({ products, categories }: Props) {
 					<div className="grid grid-cols-2  lg:grid-cols-3 gap-2 lg:gap-6 my-2">
 						{currentProducts.map((product) => (
 							<Card key={product.id} className="flex flex-col h-full">
+								<Link href={`/producto/${product.id}`}>
 								<CardContent className="p-4 flex-grow">
 									<div className="aspect-square relative mb-4">
 										<Image
-											src={product.image}
+											src={'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'}
 											alt={product.name}
 											layout="fill"
 											objectFit="cover"
@@ -153,6 +155,7 @@ export function FilteredProducts({ products, categories }: Props) {
 										Agregar al carrito
 									</Button>
 								</CardFooter>
+								</Link>
 							</Card>
 						))}
 					</div>

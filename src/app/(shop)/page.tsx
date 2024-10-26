@@ -17,29 +17,10 @@ export default function FerreteriaLanding() {
 		<main className="flex-1">
 			<section className="w-full py-12 md:py-24 lg:py-32 xl:py-20 bg-[url('/placeholder.svg')] bg-cover bg-center">
 				<div className="container px-4 md:px-6 mx-auto">
-					{/* <div className="flex flex-col items-center space-y-4 text-center">
-						<div className="flex flex-col items-center space-y-4 text-center">
-							<div className="space-y-2">
-								<h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-									Tu Ferretería de Confianza
-								</h1>
-								<p className="mx-auto max-w-[700px] text-zinc-500 md:text-xl dark:text-zinc-400">
-									Encuentra todo lo que necesitas para tus proyectos de
-									construcción y reparación.
-								</p>
-							</div>
-							<div className="space-x-4">
-								<Button asChild>
-									<Link href={"/tienda"}>Explorar tienda</Link>
-								</Button>
-								<Button variant="outline">Ver Servicios</Button>
-							</div>
-						</div>
-					</div> */}
 					<MainPageSlider />
 				</div>
 			</section>
-			<section className="w-full py-12 md:py-24 lg:py-32 bg-zinc-100">
+			<section className="w-full py-6 md:py-8 lg:py-12 bg-zinc-100">
 				<div className="container md:px-6 mx-auto">
 					<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
 						Nuestros Productos
@@ -50,7 +31,7 @@ export default function FerreteriaLanding() {
 								<Card key={item}>
 									<CardContent className="p-4">
 										<Image
-											src={`/placeholder.svg?height=200&width=300`}
+											src={'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'}
 											alt={`Producto ${item}`}
 											className="rounded-lg object-cover w-full h-48 mb-4"
 											width={300}
@@ -69,7 +50,7 @@ export default function FerreteriaLanding() {
 					</div>
 				</div>
 			</section>
-			<section className="w-full py-12 md:py-24 lg:py-32 bg-zinc-100 dark:bg-zinc-800">
+			<section className="w-full py-6 md:py-8 lg:py-12 bg-zinc-100 dark:bg-zinc-800">
 				<div className="container px-4 md:px-6 mx-auto">
 					<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
 						Nuestros Servicios
@@ -204,7 +185,7 @@ export default function FerreteriaLanding() {
 									Personal capacitado para ayudarte en todos tus proyectos.
 								</p>
 							</CardContent>
-						</Card>
+						</ Card>
 					</div>
 				</div>
 			</section>

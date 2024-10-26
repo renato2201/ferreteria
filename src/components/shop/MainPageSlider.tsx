@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const images = [
 	"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
@@ -16,34 +17,10 @@ const images = [
 ];
 
 export const MainPageSlider = () => {
+	const isMobile = useIsMobile();
 	return (
 		<>
-			<Swiper
-				spaceBetween={30}
-				centeredSlides={true}
-				loop={true}
-				autoplay={{
-					delay: 3500,
-					disableOnInteraction: true,
-				}}
-				pagination={{
-					clickable: true,
-				}}
-				navigation={true}
-				modules={[Navigation, Autoplay]}
-			>
-				{images.map((image) => (
-					<SwiperSlide key={image}>
-						<Image
-							src={image}
-							alt="slide"
-							width={200}
-							height={500}
-							className="w-full h-96 object-contain"
-						/>
-					</SwiperSlide>
-				))}
-			</Swiper>
+			{isMobile ? <MobileSlider /> : <DesktopSlider />}
 			<div className="flex flex-col items-center mt-5 text-center ">
 				<div className="space-y-2">
 					<h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
@@ -62,5 +39,65 @@ export const MainPageSlider = () => {
 				</div>
 			</div>
 		</>
+	);
+};
+
+const MobileSlider = () => {
+	return (
+		<Swiper
+			spaceBetween={30}
+			centeredSlides={true}
+			loop={true}
+			autoplay={{
+				delay: 3500,
+				disableOnInteraction: true,
+			}}
+			pagination={{
+				clickable: true,
+			}}
+			modules={[Autoplay]}
+		>
+			{images.map((image) => (
+				<SwiperSlide key={image}>
+					<Image
+						src={image}
+						alt="slide"
+						width={200}
+						height={500}
+						className="w-full h-96 object-contain"
+					/>
+				</SwiperSlide>
+			))}
+		</Swiper>
+	);
+};
+const DesktopSlider = () => {
+	return (
+		<Swiper
+			spaceBetween={30}
+			centeredSlides={true}
+			loop={true}
+			autoplay={{
+				delay: 3500,
+				disableOnInteraction: true,
+			}}
+			pagination={{
+				clickable: true,
+			}}
+			navigation={true}
+			modules={[Navigation, Autoplay]}
+		>
+			{images.map((image) => (
+				<SwiperSlide key={image}>
+					<Image
+						src={image}
+						alt="slide"
+						width={200}
+						height={500}
+						className="w-full h-96 object-contain"
+					/>
+				</SwiperSlide>
+			))}
+		</Swiper>
 	);
 };
