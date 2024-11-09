@@ -1,6 +1,6 @@
 export interface CategoriesResponse {
 	ok: boolean;
-	response: Category[];
+	categories: Category[];
 }
 
 export interface Category {

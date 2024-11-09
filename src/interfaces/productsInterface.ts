@@ -10,14 +10,27 @@ export interface ProductResponse {
 
 export interface Product {
 	id: string;
+	image: string | null;
 	name: string;
 	sku: string;
 	description: string;
 	price: number;
 	category: string;
 	categoryId: string;
+	inventoryId: string;
+	discountId: null | string;
 	quantity: number;
 	discount: number;
 	totalPrice: number;
-	image: string;
+}
+
+export interface NewProduct {
+	name: string;
+	quantity: number;
+	description: string;
+	sku: string;
+	price: number;
+	categoryId: string;
+	inventoryId: string | undefined;
+	image: string | null | undefined;
 }
