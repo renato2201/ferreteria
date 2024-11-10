@@ -40,7 +40,7 @@ export const productColumns: ColumnDef<Product>[] = [
     header: "Categoría",
   },
   {
-    accessorKey: "quantity",
+    accessorKey: "stock",
     header: ({ column }) => {
       return (
         <Button
@@ -54,7 +54,7 @@ export const productColumns: ColumnDef<Product>[] = [
       );
     },
     cell: ({ row }) => {
-      const quantity: number = row.getValue("quantity");
+      const quantity: number = row.getValue("stock");
       return <div className="text-center font-medium">{quantity}</div>;
     },
   },

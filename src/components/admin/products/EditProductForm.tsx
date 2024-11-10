@@ -42,7 +42,7 @@ export const ProductForm = ({ product }: Props) => {
     defaultValues: {
       name: product?.name ?? "",
       description: product?.description ?? "",
-      quantity: product?.quantity ?? 1,
+      quantity: product?.stock ?? 1,
       sku: product?.sku ?? "",
       price: product?.price ?? 0,
       image: product?.image ?? "",
@@ -53,6 +53,7 @@ export const ProductForm = ({ product }: Props) => {
     const updatedData = {
       ...data,
       price: Number(data.price),
+      quantity: Number(data.quantity),
     };
 
     if (product) {

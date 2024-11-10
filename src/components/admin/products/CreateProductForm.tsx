@@ -40,6 +40,7 @@ export const CreateProductForm = () => {
   const MySwal = withReactContent(Swal);
   const router = useRouter();
   const [categories, setCategories] = useState<Category[]>([]);
+  const [categoryId, setCategory] = useState<string>("");
 
   const {
     control,
@@ -61,10 +62,17 @@ export const CreateProductForm = () => {
   }, []);
 
   const onSubmit = async (data: FormData) => {
+    // Convertimos price y quantity a números
     const newProduct = {
       ...data,
+      price: Number.parseFloat(data.price.toString()), // Convierte a número flotante
+      quantity: Number.parseInt(data.quantity.toString(), 10), // Convierte a número entero
+      categoryId: categoryId, // Usamos el valor de categoryId
       inventoryId: undefined, // Si necesitas agregarlo después
     };
+
+    // console.log(newProduct);
+
     try {
       await createProduct(newProduct);
       MySwal.fire({
@@ -157,22 +165,31 @@ export const CreateProductForm = () => {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="category">Categoría</Label>
-                <Select
-                  {...register("categoryId", {
-                    required: "La categoría es obligatoria",
-                  })}
-                >
-                  <SelectTrigger id="category">
-                    <SelectValue placeholder="Selecciona una categoría" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {categories.map((category) => (
-                      <SelectItem key={category.id} value={category.id}>
-                        {category.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <Controller
+                  name="categoryId"
+                  control={control}
+                  rules={{ required: "La categoría es obligatoria" }}
+                  render={({ field }) => (
+                    <Select
+                      value={categoryId} // Enlazamos el value con categoryId
+                      onValueChange={(value) => {
+                        setCategory(value); // Actualizamos el estado de categoryId
+                        field.onChange(value); // Actualizamos el estado en react-hook-form
+                      }}
+                    >
+                      <SelectTrigger id="category">
+                        <SelectValue placeholder="Selecciona una categoría" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {categories.map((category) => (
+                          <SelectItem key={category.id} value={category.id}>
+                            {category.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
                 {errors.categoryId && (
                   <p className="text-red-500">{errors.categoryId.message}</p>
                 )}

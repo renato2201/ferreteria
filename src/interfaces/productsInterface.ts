@@ -19,6 +19,7 @@ export interface Product {
 	categoryId: string;
 	inventoryId: string;
 	discountId: null | string;
+	stock: number | null;
 	quantity: number;
 	discount: number;
 	totalPrice: number;
