@@ -11,10 +11,14 @@ import {
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { adminMenu } from "@/menus/adminMenu";
+import {ProfilePicture} from "@/components/shared";
 
 export function AppSidebar() {
 	return (
 		<Sidebar>
+			<SidebarHeader>
+				<ProfilePicture/>
+			</SidebarHeader>
 			<SidebarContent>
 				<SidebarGroup>
 					<SidebarGroupLabel>Application</SidebarGroupLabel>
