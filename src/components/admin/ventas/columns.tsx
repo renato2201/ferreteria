@@ -1,26 +1,30 @@
 "use client";
 import { Button } from "@/components/ui/button";
+
 import type { Product } from "@/interfaces/productsInterface";
+import type { Order } from "@/interfaces/ordersInterface";
 import { refreshProducts } from "@/utils/actions";
 import { deleteProduct } from "@/utils/productsAPI";
+
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal, Pencil, Trash } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-export const productColumns: ColumnDef<Product>[] = [
+export const ventasColumns: ColumnDef<Order>[] = [
 	{
-		accessorKey: "name",
-		header: "Nombre",
+		accessorKey: "id",
+		header: "Id",
 	},
 	{
-		accessorKey: "category",
-		header: "Categoría",
+		accessorKey: "status",
+		header: "Estado",
 	},
 	{
-		accessorKey: "stock",
+		accessorKey: "total",
 		header: ({ column }) => {
 			return (
 				<Button
@@ -28,36 +32,49 @@ export const productColumns: ColumnDef<Product>[] = [
 					variant="ghost"
 					onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 				>
-					Stock
+					Total
 					<ArrowUpDown className="ml-2 h-4 w-4" />
 				</Button>
 			);
 		},
 		cell: ({ row }) => {
-			const quantity: number = row.getValue("stock");
-			return <div className="text-center font-medium">{quantity}</div>;
+			const quantity: number = row.getValue("total");
+			return <div className="text-center font-medium">S/. {quantity}</div>;
 		},
 	},
 	{
-		accessorKey: "price",
+		accessorKey: "productCount",
 		header: ({ column }) => (
 			<Button
 				className="w-full"
 				variant={"ghost"}
 				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 			>
-				Precio
+				Productos
 				<ArrowUpDown className="ml-2 h-4 w-4" />
 			</Button>
 		),
 		cell: ({ row }) => {
-			const amount = Number.parseFloat(row.getValue("price"));
-			const formatted = new Intl.NumberFormat("en-US", {
-				style: "currency",
-				currency: "PEN",
-			}).format(amount);
+			const amount = Number.parseFloat(row.getValue("productCount"));
 
-			return <div className="text-center font-medium">{formatted}</div>;
+			return <div className="text-center font-medium">{amount}</div>;
+		},
+	},
+	{
+		accessorKey: "createdAt",
+		header: "Fecha",
+		cell: ({ row }) => {
+			const date = row.getValue("createdAt");
+			const dateFormat = new Date(date).toLocaleDateString("es-ES");
+			return <div className=" font-medium">{dateFormat}</div>;
+		},
+	},
+	{
+		accessorKey: "user",
+		header: "Usuario",
+		cell: ({ row }) => {
+			const user = row.getValue("user");
+			return <div className=" font-medium">{user}</div>;
 		},
 	},
 	{
@@ -66,9 +83,9 @@ export const productColumns: ColumnDef<Product>[] = [
 			<div className="flex gap-2 justify-center pr-5">Acciones</div>
 		),
 		cell: ({ row }) => {
-			const product = row.original;
+			const venta = row.original;
 
-			return <Actions product={product} />;
+			return <Actions venta={venta} />;
 		},
 	},
 ];
@@ -129,44 +146,13 @@ export const productColumns: ColumnDef<Product>[] = [
 //   );
 // }
 
-const Actions = ({ product }: { product: Product }) => {
-	const handleErase = async (id: string, inventoryId: string) => {
-		try {
-			await deleteProduct(id, inventoryId);
-			MySwal.fire({
-				title: "Producto eliminado",
-				text: "El producto ha sido eliminado exitosamente",
-				icon: "success",
-				confirmButtonText: "Aceptar",
-			}).then(() => {
-				router.refresh();
-			});
-		} catch (e) {
-			console.log(e);
-			MySwal.fire({
-				title: "Error",
-				text: "Ha ocurrido un error al eliminar el producto",
-				icon: "error",
-				confirmButtonText: "Aceptar",
-			}).then(() => {
-				refreshProducts();
-				router.refresh();
-			});
-
-			// alert(`Producto eliminado: ${id}, ${inventoryId}`);
-		}
-	};
-	const MySwal = withReactContent(Swal);
-	const router = useRouter();
+const Actions = ({ venta }: { venta: Order }) => {
 	return (
 		<div className="flex gap-2 justify-center pr-5">
 			<Button asChild>
-				<Link href={`/admin/producto/${product.id}`}>
+				<Link href={`/admin/ventas/${venta.id}`}>
 					<Pencil size={15} />
 				</Link>
-			</Button>
-			<Button onClick={() => handleErase(product.id, product.inventoryId)}>
-				<Trash size={15} />
 			</Button>
 		</div>
 	);

@@ -1,5 +1,4 @@
 "use client";
-
 import {
 	type ColumnDef,
 	type ColumnFiltersState,
@@ -28,15 +27,15 @@ import { Button } from "@/components/ui/button";
 import { DataTablePagination } from "@/components/ui/data-table-pagination";
 import Link from "next/link";
 
-interface ProductsTableProps<TData, TValue> {
+interface VentasTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];
 	data: TData[];
 }
 
-export function ProductsTable<TData, TValue>({
+export function VentasTable<TData, TValue>({
 	columns,
 	data,
-}: ProductsTableProps<TData, TValue>) {
+}: VentasTableProps<TData, TValue>) {
 	const [sorting, setSorting] = useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 	const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -67,18 +66,18 @@ export function ProductsTable<TData, TValue>({
 				<div className="flex gap-4">
 					<Input
 						placeholder="Filtrar productos..."
-						value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+						value={(table.getColumn("id")?.getFilterValue() as string) ?? ""}
 						onChange={(event) =>
-							table.getColumn("name")?.setFilterValue(event.target.value)
+							table.getColumn("id")?.setFilterValue(event.target.value)
 						}
 						className="max-w-sm"
 					/>
 				</div>
-				<div>
+				{/* <div>
 					<Button variant="outline" asChild className="ml-4">
 						<Link href={"/admin/producto/crear"}>Crear producto</Link>
 					</Button>
-				</div>
+				</div> */}
 			</div>
 			<div className="rounded-md border">
 				<Table>

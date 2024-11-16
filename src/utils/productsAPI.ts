@@ -5,17 +5,21 @@ import type {
 	ProductsResponse,
 } from "@/interfaces/productsInterface";
 import { baseURL } from "./urls";
-import { revalidatePath } from "next/cache";
 
-export const getProducts = async (): Promise<Product[]> => {
-	const response: Promise<ProductsResponse> = await fetch(
-		`${baseURL}/api/v1/products`,
-		{
-			cache: "no-store",
-		},
-	).then((res) => res.json());
-	const products = (await response).products;
-	return products;
+export const getProducts = async (): Promise<Product[] | null> => {
+	try {
+		const response: Promise<ProductsResponse> = await fetch(
+			`${baseURL}/api/v1/products`,
+			{
+				cache: "no-store",
+			},
+		).then((res) => res.json());
+		const products = (await response).products;
+		return products;
+	} catch (error) {
+		console.log(error);
+		return null;
+	}
 };
 
 export const getSingleProduct = async (id: string): Promise<Product> => {
